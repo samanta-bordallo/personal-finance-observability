@@ -1,7 +1,5 @@
-version: '3.8'
-
 services:
-  #Database: Persistente storage for all financial data
+  # Database: persistent storage for all financial data
   db:
     image: postgres:15
     container_name: finance-db
@@ -18,8 +16,8 @@ services:
           memory: 256M
     networks:
       - finance-network
-  #Ingestion Tool: No-code interface to manage database records
 
+  # Ingestion tool: no-code interface to manage database records
   nocodb:
     image: nocodb/nocodb:latest
     container_name: finance-ingestion
@@ -36,7 +34,8 @@ services:
           memory: 512M
     networks:
       - finance-network
-  # Visualization: Dashboards for financial monitoring
+
+  # Visualization: dashboards for financial monitoring
   grafana:
     image: grafana/grafana-oss:latest
     container_name: finance-dashboard
@@ -53,6 +52,7 @@ services:
           memory: 256M
     networks:
       - finance-network
-  networks:
-    finance-network:
-      driver: bridge
+
+networks:
+  finance-network:
+    driver: bridge
